@@ -12,7 +12,7 @@ import java.util.Optional;
  * Created by Łukasz on 28.11.2018
  */
 public interface EventRepository extends JpaRepository<Event, Long> {
-    List<Event> findAll();
+    List<Event> findAllByOrderById();
 
     Optional<Event> findById(Long personId);
 

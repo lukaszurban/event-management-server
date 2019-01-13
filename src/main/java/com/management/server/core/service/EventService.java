@@ -18,7 +18,7 @@ public class EventService {
     private final EventRepository eventRepository;
 
     public List<Event> getEvents() {
-        return eventRepository.findAll();
+        return eventRepository.findAllByOrderById();
     }
 
     public Event getEventById(Long id) {
