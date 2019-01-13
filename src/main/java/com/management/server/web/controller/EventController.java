@@ -9,8 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by Łukasz on 03.12.2018
@@ -25,7 +26,8 @@ public class EventController extends AbstractController {
 
     @GetMapping
     public ResponseEntity getEvents() {
-        final Set<EventDto> events = mapper.mapToDtoSet(new HashSet<>(eventService.getEvents()));
+        final List<EventDto> events = mapper.mapToDtoList(new HashSet<>(eventService.getEvents()));
+        events.sort(Comparator.comparing(e -> e.getDate()));
         return new ResponseEntity(events, HttpStatus.OK);
     }
 

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,5 +39,11 @@ public class EventMapper {
         return entities.stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toSet());
+    }
+
+    public List<EventDto> mapToDtoList(Set<Event> entities) {
+        return entities.stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
     }
 }

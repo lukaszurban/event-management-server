@@ -15,6 +15,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @Builder
 public class UserDto implements Serializable {
+    private Long id;
     private String login;
     private String firstName;
     private String lastName;
@@ -26,7 +27,8 @@ public class UserDto implements Serializable {
     @Override
     public String toString() {
         return "UserDto{" +
-                "login='" + login + '\'' +
+                "id=" + id +
+                ", login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
