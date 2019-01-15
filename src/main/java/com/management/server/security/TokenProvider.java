@@ -18,7 +18,7 @@ import static com.management.server.core.exception.ExceptionMessage.EXPIRED_TOKE
 @Component
 public class TokenProvider {
 
-    public static final String SECRET = "sekretnykod";
+    public static final String SECRET = "secretCode";
     public static final int EXPIRATION_TIME = 43200000;
 
     public String generateToken(UserDetails userDetails) {
@@ -43,11 +43,6 @@ public class TokenProvider {
                     .setSigningKey(SECRET)
                     .parseClaimsJws(token);
         }
-//        catch (Exception e) {
-////            log.error(e.getMessage(), e);
-////            throw new UserNotFoundException(e.getMessage()); //stworzyć nowy wyjatek i zmienic
-//            throw new AuthException("Provided token is not valid.");
-//        }
         catch (MalformedJwtException | SignatureException e) {
             throw new AuthException(BAD_TOKEN.toString());
         } catch (ExpiredJwtException e) {
