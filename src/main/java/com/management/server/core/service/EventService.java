@@ -1,6 +1,6 @@
 package com.management.server.core.service;
 
-import com.management.server.core.exception.UserNotFoundException;
+import com.management.server.core.exception.EventNotFoundException;
 import com.management.server.core.model.Event;
 import com.management.server.core.repository.EventRepository;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class EventService {
 
     public Event getEventById(Long id) {
         return eventRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(EventNotFoundException::new);
     }
 
     public List<Event> getUsersEvents(Long id) {
